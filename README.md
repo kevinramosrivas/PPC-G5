@@ -4,3 +4,6 @@
 * Blas Ruiz Luis Aaron			        
 * Lázaro Escobar, Vivian Rosmery		
 * Ramos Rivas, Kevin Keyler
+
+## Estado del proyecto
+[Excel del proyecto](https://docs.google.com/spreadsheets/d/1urUlLEcwkw1F282g2lV3hYvu_YgqcEFL5EIuW2qPREU/edit?usp=sharing)
