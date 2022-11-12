@@ -1,6 +1,7 @@
 
 package Interface;
 
+import Controller.RegisterCtr;
 import Model.Admin;
 import java.util.*;
 import java.text.SimpleDateFormat;
@@ -139,8 +140,7 @@ public class admin_menu extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        RegistrarUsuarios registrarUsuarios = new RegistrarUsuarios();
-        registrarUsuarios.setVisible(true);
+        RegisterCtr register = new RegisterCtr();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     public static String fecha(){

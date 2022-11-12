@@ -24,34 +24,24 @@ public class PrintReportCtr implements ActionListener{
             if(this.printnui.jCheckBox1.isSelected()){
               WriterThread hilo1 = new WriterThread("1");
               hilo1.start();
-            }  
-        }
-        if(e.getSource() == this.printnui.btnImprimir){
+            }
             if(this.printnui.jCheckBox2.isSelected()){
               WriterThread hilo2 = new WriterThread("2");
               hilo2.start();
-            }  
-        }
-        if(e.getSource() == this.printnui.btnImprimir){
+            }
             if(this.printnui.jCheckBox3.isSelected()){
               WriterThread hilo3 = new WriterThread("3");
               hilo3.start();
-            }  
-        }
-        if(e.getSource() == this.printnui.btnImprimir){
+            }
             if(this.printnui.jCheckBox4.isSelected()){
               WriterThread hilo4 = new WriterThread("4");
               hilo4.start();
-            }  
-        }
-        if(e.getSource() == this.printnui.btnImprimir){
+            }
             if(this.printnui.jCheckBox5.isSelected()){
               WriterThread hilo5 = new WriterThread("5");
               hilo5.start();
-            }  
+            } 
         }
-        
-        
         
     }
     
