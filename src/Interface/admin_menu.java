@@ -2,6 +2,7 @@
 package Interface;
 
 import Controller.RegisterCtr;
+import Controller.ModificarCtr;
 import Model.Admin;
 import java.util.*;
 import java.text.SimpleDateFormat;
@@ -51,6 +52,11 @@ public class admin_menu extends javax.swing.JFrame {
         });
 
         jButton3.setText("MODIFICAR USUARIO");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/logout_icon.png"))); // NOI18N
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -142,6 +148,11 @@ public class admin_menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         RegisterCtr register = new RegisterCtr();
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        ModificarCtr modificar = new ModificarCtr();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     public static String fecha(){
         Date fecha = new Date();

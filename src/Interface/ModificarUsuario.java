@@ -4,17 +4,28 @@
  */
 package Interface;
 
+import Model.Admin;
+import javax.swing.WindowConstants;
+
 /**
  *
  * @author USUARIO
  */
 public class ModificarUsuario extends javax.swing.JFrame {
 
+    public Admin administrador = Model.Admin.administrador;
     /**
      * Creates new form ModificarUsuario
      */
     public ModificarUsuario() {
         initComponents();
+        
+        setVisible(true);
+        setTitle("Modificar usuario - Sesión de " + administrador.getName_admin());
+        setSize(534,437);
+        setResizable(false);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -36,9 +47,10 @@ public class ModificarUsuario extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         txt_contraseña = new javax.swing.JPasswordField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable_usuarios = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        btn_actualizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -103,7 +115,7 @@ public class ModificarUsuario extends javax.swing.JFrame {
         });
         getContentPane().add(txt_contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 210, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTable_usuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -114,19 +126,19 @@ public class ModificarUsuario extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTable_usuarios);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 490, 130));
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jButton1.setText("ACTUALIZAR");
+        jButton1.setText("REGRESAR");
         jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 200, 150, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 400, 150, -1));
 
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jButton3.setText("BUSCAR USUARIOS");
@@ -137,6 +149,16 @@ public class ModificarUsuario extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, -1, -1));
+
+        btn_actualizar.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btn_actualizar.setText("ACTUALIZAR");
+        btn_actualizar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_actualizarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, 150, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -164,6 +186,10 @@ public class ModificarUsuario extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_actualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -201,6 +227,7 @@ public class ModificarUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btn_actualizar;
     public javax.swing.JComboBox<String> cmb_niveles;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
@@ -210,7 +237,7 @@ public class ModificarUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable_usuarios;
     public javax.swing.JTextField txt_apellido;
     public javax.swing.JPasswordField txt_contraseña;
     public javax.swing.JTextField txt_nombre;
