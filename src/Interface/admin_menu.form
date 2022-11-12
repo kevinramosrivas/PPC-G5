@@ -46,6 +46,7 @@
                       <Component id="jButton3" max="32767" attributes="0"/>
                       <Component id="jButton2" max="32767" attributes="0"/>
                       <Component id="jButton1" min="-2" pref="160" max="-2" attributes="0"/>
+                      <Component id="jButton5" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="128" max="32767" attributes="0"/>
               </Group>
@@ -75,7 +76,9 @@
                       </Group>
                       <Component id="jLabel2" min="-2" pref="140" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="jButton5" min="-2" pref="40" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                   <Component id="jButton4" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               </Group>
@@ -125,6 +128,14 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="jLabel3"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton5">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="REGISTRAR USUARIO"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

@@ -189,6 +189,7 @@ public class RegistrarUsuarios extends javax.swing.JFrame {
             Connection cn = Connection.ConnectionPool();
             PreparedStatement pat = cn.prepareStatement(
                 "select name_admin from admins where name_admin = '"+ nombre + "'");
+            
             ResultSet rs = pat.executedQuery();
             if(rs.next()){
                 txt_nombre.setBackground(Color.red);
