@@ -22,6 +22,7 @@ CREATE TABLE IF NOT EXISTS `g5-ppc_db`.`admins` (
   `id_admin` INT NOT NULL AUTO_INCREMENT,
   `name_admin` VARCHAR(45) NULL,
   `ap_admin` VARCHAR(45) NULL,
+  `pass_admin` INT NOT NULL,
   PRIMARY KEY (`id_admin`))
 ENGINE = InnoDB;
 
@@ -33,6 +34,7 @@ CREATE TABLE IF NOT EXISTS `g5-ppc_db`.`users` (
   `id_user` INT NOT NULL AUTO_INCREMENT,
   `name_user` VARCHAR(45) NULL,
   `ap_user` VARCHAR(45) NULL,
+  `pass_user` INT NOT NULL,
   PRIMARY KEY (`id_user`))
 ENGINE = InnoDB;
 
@@ -75,10 +77,10 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `g5-ppc_db`;
-INSERT INTO `g5-ppc_db`.`admins` (`id_admin`, `name_admin`, `ap_admin`) VALUES (1, 'Arturo', 'Velazques');
-INSERT INTO `g5-ppc_db`.`admins` (`id_admin`, `name_admin`, `ap_admin`) VALUES (2, 'Frank', 'Prado');
-INSERT INTO `g5-ppc_db`.`admins` (`id_admin`, `name_admin`, `ap_admin`) VALUES (3, 'Daniela', 'Pierola');
-INSERT INTO `g5-ppc_db`.`admins` (`id_admin`, `name_admin`, `ap_admin`) VALUES (4, 'Flora', 'Mana');
+INSERT INTO `g5-ppc_db`.`admins` (`id_admin`, `name_admin`, `ap_admin`, `pass_admin`) VALUES (1, 'Arturo', 'Velazques', 1);
+INSERT INTO `g5-ppc_db`.`admins` (`id_admin`, `name_admin`, `ap_admin`, `pass_admin`) VALUES (2, 'Frank', 'Prado', 2);
+INSERT INTO `g5-ppc_db`.`admins` (`id_admin`, `name_admin`, `ap_admin`, `pass_admin`) VALUES (3, 'Daniela', 'Pierola', 3);
+INSERT INTO `g5-ppc_db`.`admins` (`id_admin`, `name_admin`, `ap_admin`, `pass_admin`) VALUES (4, 'Flora', 'Mana', 4);
 
 COMMIT;
 
@@ -88,16 +90,16 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `g5-ppc_db`;
-INSERT INTO `g5-ppc_db`.`users` (`id_user`, `name_user`, `ap_user`) VALUES (1, 'Alma ', 'Granados');
-INSERT INTO `g5-ppc_db`.`users` (`id_user`, `name_user`, `ap_user`) VALUES (2, 'Herminia ', 'Sobrino');
-INSERT INTO `g5-ppc_db`.`users` (`id_user`, `name_user`, `ap_user`) VALUES (3, 'Pascual ', 'Cuenca');
-INSERT INTO `g5-ppc_db`.`users` (`id_user`, `name_user`, `ap_user`) VALUES (4, 'Faustino ', 'Cordoba');
-INSERT INTO `g5-ppc_db`.`users` (`id_user`, `name_user`, `ap_user`) VALUES (5, 'Mirian ', 'Oviedo');
-INSERT INTO `g5-ppc_db`.`users` (`id_user`, `name_user`, `ap_user`) VALUES (6, 'Eusebio ', 'Rebollo');
-INSERT INTO `g5-ppc_db`.`users` (`id_user`, `name_user`, `ap_user`) VALUES (7, 'Aurora ', 'Arcos');
-INSERT INTO `g5-ppc_db`.`users` (`id_user`, `name_user`, `ap_user`) VALUES (8, 'Diego ', 'Chaves');
-INSERT INTO `g5-ppc_db`.`users` (`id_user`, `name_user`, `ap_user`) VALUES (9, 'Federico ', 'Herreros');
-INSERT INTO `g5-ppc_db`.`users` (`id_user`, `name_user`, `ap_user`) VALUES (10, 'Josefa ', 'Calle');
+INSERT INTO `g5-ppc_db`.`users` (`id_user`, `name_user`, `ap_user`, `pass_user`) VALUES (1, 'Alma ', 'Granados', 1);
+INSERT INTO `g5-ppc_db`.`users` (`id_user`, `name_user`, `ap_user`, `pass_user`) VALUES (2, 'Herminia ', 'Sobrino', 2);
+INSERT INTO `g5-ppc_db`.`users` (`id_user`, `name_user`, `ap_user`, `pass_user`) VALUES (3, 'Pascual ', 'Cuenca', 3);
+INSERT INTO `g5-ppc_db`.`users` (`id_user`, `name_user`, `ap_user`, `pass_user`) VALUES (4, 'Faustino ', 'Cordoba', 4);
+INSERT INTO `g5-ppc_db`.`users` (`id_user`, `name_user`, `ap_user`, `pass_user`) VALUES (5, 'Mirian ', 'Oviedo', 5);
+INSERT INTO `g5-ppc_db`.`users` (`id_user`, `name_user`, `ap_user`, `pass_user`) VALUES (6, 'Eusebio ', 'Rebollo', 6);
+INSERT INTO `g5-ppc_db`.`users` (`id_user`, `name_user`, `ap_user`, `pass_user`) VALUES (7, 'Aurora ', 'Arcos', 7);
+INSERT INTO `g5-ppc_db`.`users` (`id_user`, `name_user`, `ap_user`, `pass_user`) VALUES (8, 'Diego ', 'Chaves', 8);
+INSERT INTO `g5-ppc_db`.`users` (`id_user`, `name_user`, `ap_user`, `pass_user`) VALUES (9, 'Federico ', 'Herreros', 9);
+INSERT INTO `g5-ppc_db`.`users` (`id_user`, `name_user`, `ap_user`, `pass_user`) VALUES (10, 'Josefa ', 'Calle', 10);
 
 COMMIT;
 
