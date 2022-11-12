@@ -1,16 +1,18 @@
 
 package Interface;
 
+import Model.Admin;
 import java.util.*;
 import java.text.SimpleDateFormat;
 public class admin_menu extends javax.swing.JFrame {
-
+    public Admin administrador = Model.Admin.administrador;
     /**
      * Creates new form admin_menu
      */
     public admin_menu() {
         initComponents();
         jLabel3.setText(fecha()+" "+hora());
+        setVisible(true);
     }
 
     /**
@@ -151,37 +153,6 @@ public class admin_menu extends javax.swing.JFrame {
         Date fecha2 = new Date();
         SimpleDateFormat formatofecha2 = new SimpleDateFormat("HH:mm");
         return formatofecha2.format(fecha2);
-    }
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(admin_menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(admin_menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(admin_menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(admin_menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new admin_menu().setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
