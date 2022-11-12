@@ -121,7 +121,7 @@ public class RegistrarUsuarios extends javax.swing.JFrame {
         getContentPane().add(cmb_niveles, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, 210, -1));
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jButton1.setText("<html>\n<p style=\"text-align:center\" >Registrar</p>\n<p style=\"text-align:center\" >Usuario</p>\n</html>");
+        jButton1.setText("<html> <p style=\"text-align:center\" >Registrar</p> <p style=\"text-align:center\" >Usuario</p> </html>");
         jButton1.setToolTipText("");
         jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -242,15 +242,15 @@ public class RegistrarUsuarios extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cmb_niveles;
-    private javax.swing.JButton jButton1;
+    public static javax.swing.JComboBox<String> cmb_niveles;
+    public javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField txt_apellido;
-    private javax.swing.JPasswordField txt_contraseña;
-    private javax.swing.JTextField txt_nombre;
+    public static javax.swing.JTextField txt_apellido;
+    public static javax.swing.JPasswordField txt_contraseña;
+    public static javax.swing.JTextField txt_nombre;
     // End of variables declaration//GEN-END:variables
 }
