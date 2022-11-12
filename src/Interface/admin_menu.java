@@ -1,18 +1,21 @@
 
 package Interface;
 
+import Controller.PrintReportCtr;
 import Controller.RegisterCtr;
+import Controller.watchDemon;
 import Model.Admin;
 import java.util.*;
 import java.text.SimpleDateFormat;
 public class admin_menu extends javax.swing.JFrame {
     public Admin administrador = Model.Admin.administrador;
+    public watchDemon reloj = new watchDemon(this);
     /**
      * Creates new form admin_menu
      */
     public admin_menu() {
         initComponents();
-        jLabel3.setText(fecha()+" "+hora());
+        reloj.start();
         setVisible(true);
     }
 
@@ -131,7 +134,7 @@ public class admin_menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        PrintReportCtr adlog = new PrintReportCtr();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -143,17 +146,17 @@ public class admin_menu extends javax.swing.JFrame {
         RegisterCtr register = new RegisterCtr();
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    public static String fecha(){
-        Date fecha = new Date();
-        SimpleDateFormat formatofecha = new SimpleDateFormat("dd/MM/YYYY");
-        return formatofecha.format(fecha);
-    }
-    
-    public static String hora(){
-        Date fecha2 = new Date();
-        SimpleDateFormat formatofecha2 = new SimpleDateFormat("HH:mm");
-        return formatofecha2.format(fecha2);
-    }
+//    public static String fecha(){
+//        Date fecha = new Date();
+//        SimpleDateFormat formatofecha = new SimpleDateFormat("dd/MM/YYYY");
+//        return formatofecha.format(fecha);
+//    }
+//    
+//    public static String hora(){
+//        Date fecha2 = new Date();
+//        SimpleDateFormat formatofecha2 = new SimpleDateFormat("HH:mm");
+//        return formatofecha2.format(fecha2);
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -162,7 +165,7 @@ public class admin_menu extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    public javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
