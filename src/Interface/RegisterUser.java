@@ -9,6 +9,8 @@ import java.sql.SQLException;
 import java.sql.*;
 import Interface.Login;
 import Controller.LoginCtr;
+import Controller.RegisterCtr;
+import Model.Admin;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
@@ -17,18 +19,18 @@ import javax.swing.WindowConstants;
  *
  * @author USUARIO
  */
-public class RegistrarUsuarios extends javax.swing.JFrame {
+public class RegisterUser extends javax.swing.JFrame {
 
-    int id_admin;
-    
+    public Admin administrador = Model.Admin.administrador;
     /**
      * Creates new form RegistrarUsuarios
      */
-    public RegistrarUsuarios() {
+    public RegisterUser() {
         initComponents();
-        id_admin = LoginCtr.adminId;
+        
+        setVisible(true);
     
-        setTitle("Registrar nuevo usuario - Sesión de " + id_admin);
+        setTitle("Registrar nuevo usuario - Sesión de " + administrador.getName_admin());
         setSize(490,350);
         setResizable(false);
         setLocationRelativeTo(null);
@@ -55,7 +57,7 @@ public class RegistrarUsuarios extends javax.swing.JFrame {
         txt_contraseña = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
         cmb_niveles = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        btnRegister = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -120,17 +122,26 @@ public class RegistrarUsuarios extends javax.swing.JFrame {
         });
         getContentPane().add(cmb_niveles, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, 210, -1));
 
+<<<<<<< HEAD:src/Interface/RegistrarUsuarios.java
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jButton1.setText("<html> <p style=\"text-align:center\" >Registrar</p> <p style=\"text-align:center\" >Usuario</p> </html>");
         jButton1.setToolTipText("");
         jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
+=======
+        btnRegister.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btnRegister.setText("<html>\n<p style=\"text-align:center\" >Registrar</p>\n<p style=\"text-align:center\" >Usuario</p>\n</html>");
+        btnRegister.setToolTipText("");
+        btnRegister.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnRegister.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnRegister.addActionListener(new java.awt.event.ActionListener() {
+>>>>>>> master:src/Interface/RegisterUser.java
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnRegisterActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, 90, 80));
+        getContentPane().add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, 90, 80));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -151,106 +162,35 @@ public class RegistrarUsuarios extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cmb_nivelesActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        int permisos_cmb,validación =0;
-        String nombre,apellido, pass, permisos_string;
-        
-        nombre = txt_nombre.getText().trim();
-        apellido = txt_apellido.getText().trim();
-        pass = txt_contraseña.getText().trim();
-        
-        permisos_cmb = cmb_niveles.getSelectedIndex()+1 ;
-        
-        //Validación de campos
-        
-        if(nombre.equals("")){
-            txt_nombre.setBackground(Color.red);
-            validación++;
-        }
-        
-        if(apellido.equals("")){
-            txt_apellido.setBackground(Color.red);
-            validación++;
-        }
-        
-        if(pass.equals("")){
-            txt_contraseña.setBackground(Color.red);
-            validación++;
-        }
-        
-        if (permisos_cmb==1){
-            permisos_string = "Administrador";
-        }else if (permisos_cmb==2){
-            permisos_string = "Trabajador";
-        }
-        
-        try {
-            Connection cn = Connection.ConnectionPool();
-            PreparedStatement pat = cn.prepareStatement(
-                "select name_admin from admins where name_admin = '"+ nombre + "'");
-            
-            ResultSet rs = pat.executedQuery();
-            if(rs.next()){
-                txt_nombre.setBackground(Color.red);
-                JOptionPane.showMessageDialog(null,"Nombre de Usuario no dispobile");
-            }else{
-            }
-            
-        } catch (SQLException e){
-            System.err.println("Error en validar nombre de usuario");
-            JOptionPane.showMessageDialog(null,"Error al comparar usuario!!, contacte al administrador");
-        }
-        
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
+  
+    }//GEN-LAST:event_btnRegisterActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistrarUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistrarUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistrarUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistrarUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new RegistrarUsuarios().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+<<<<<<< HEAD:src/Interface/RegistrarUsuarios.java
     public static javax.swing.JComboBox<String> cmb_niveles;
     public javax.swing.JButton jButton1;
+=======
+    public javax.swing.JButton btnRegister;
+    public javax.swing.JComboBox<String> cmb_niveles;
+>>>>>>> master:src/Interface/RegisterUser.java
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+<<<<<<< HEAD:src/Interface/RegistrarUsuarios.java
     public static javax.swing.JTextField txt_apellido;
     public static javax.swing.JPasswordField txt_contraseña;
     public static javax.swing.JTextField txt_nombre;
+=======
+    public javax.swing.JTextField txt_apellido;
+    public javax.swing.JPasswordField txt_contraseña;
+    public javax.swing.JTextField txt_nombre;
+>>>>>>> master:src/Interface/RegisterUser.java
     // End of variables declaration//GEN-END:variables
 }
