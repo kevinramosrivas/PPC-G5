@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 
 public class LoginCtr implements ActionListener{
     Login loginui;
-    private int adminId = 0;
+    static public int adminId = 0;
     public LoginCtr(){
         loginui = new Login();
         loginui.btnLogin.addActionListener(this);

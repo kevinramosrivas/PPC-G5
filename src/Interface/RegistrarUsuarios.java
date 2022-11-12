@@ -8,6 +8,7 @@ import Connection.ConnectionPool;
 import java.sql.SQLException;
 import Interface.Login;
 import Controller.LoginCtr;
+import javax.swing.WindowConstants;
 
 /**
  *
@@ -25,11 +26,14 @@ public class RegistrarUsuarios extends javax.swing.JFrame {
         id_admin = LoginCtr.adminId;
     
         setTitle("Registrar nuevo usuario - Sesión de " + id_admin);
-        setSize(630,350);
-    
-    
+        setSize(490,350);
+        setResizable(false);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+      
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -55,19 +59,19 @@ public class RegistrarUsuarios extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Registro de Usuarios");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel5.setText("Tipo de Usuario:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Nombre:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setText("Apellido:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
 
         txt_apellido.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         txt_apellido.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -77,7 +81,7 @@ public class RegistrarUsuarios extends javax.swing.JFrame {
                 txt_apellidoActionPerformed(evt);
             }
         });
-        getContentPane().add(txt_apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 210, -1));
+        getContentPane().add(txt_apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 210, -1));
 
         txt_nombre.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         txt_nombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -87,7 +91,7 @@ public class RegistrarUsuarios extends javax.swing.JFrame {
                 txt_nombreActionPerformed(evt);
             }
         });
-        getContentPane().add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 210, -1));
+        getContentPane().add(txt_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 210, -1));
 
         txt_contraseña.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         txt_contraseña.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -97,14 +101,15 @@ public class RegistrarUsuarios extends javax.swing.JFrame {
                 txt_contraseñaActionPerformed(evt);
             }
         });
-        getContentPane().add(txt_contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 210, -1));
+        getContentPane().add(txt_contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 210, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel4.setText("Contraseña:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
 
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Trabajador" }));
+        jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -113,7 +118,7 @@ public class RegistrarUsuarios extends javax.swing.JFrame {
         getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, 210, -1));
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jButton1.setText("<html>\n<p>Registrar</p>\n<p>Usuario</p>\n</html>");
+        jButton1.setText("<html>\n<p style=\"text-align:center\" >Registrar</p>\n<p style=\"text-align:center\" >Usuario</p>\n</html>");
         jButton1.setToolTipText("");
         jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -122,7 +127,7 @@ public class RegistrarUsuarios extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, 90, 80));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, 90, 80));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -176,6 +181,7 @@ public class RegistrarUsuarios extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new RegistrarUsuarios().setVisible(true);
             }
