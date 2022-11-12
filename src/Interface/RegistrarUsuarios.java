@@ -6,8 +6,11 @@ package Interface;
 
 import Connection.ConnectionPool;
 import java.sql.SQLException;
+import java.sql.*;
 import Interface.Login;
 import Controller.LoginCtr;
+import java.awt.Color;
+import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 
 /**
@@ -51,7 +54,7 @@ public class RegistrarUsuarios extends javax.swing.JFrame {
         txt_nombre = new javax.swing.JTextField();
         txt_contraseña = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cmb_niveles = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -107,15 +110,15 @@ public class RegistrarUsuarios extends javax.swing.JFrame {
         jLabel4.setText("Contraseña:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
 
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Trabajador" }));
-        jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        cmb_niveles.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        cmb_niveles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Trabajador" }));
+        cmb_niveles.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        cmb_niveles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                cmb_nivelesActionPerformed(evt);
             }
         });
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, 210, -1));
+        getContentPane().add(cmb_niveles, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, 210, -1));
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jButton1.setText("<html>\n<p style=\"text-align:center\" >Registrar</p>\n<p style=\"text-align:center\" >Usuario</p>\n</html>");
@@ -144,12 +147,61 @@ public class RegistrarUsuarios extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_contraseñaActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void cmb_nivelesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_nivelesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_cmb_nivelesActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        int permisos_cmb,validación =0;
+        String nombre,apellido, pass, permisos_string;
+        
+        nombre = txt_nombre.getText().trim();
+        apellido = txt_apellido.getText().trim();
+        pass = txt_contraseña.getText().trim();
+        
+        permisos_cmb = cmb_niveles.getSelectedIndex()+1 ;
+        
+        //Validación de campos
+        
+        if(nombre.equals("")){
+            txt_nombre.setBackground(Color.red);
+            validación++;
+        }
+        
+        if(apellido.equals("")){
+            txt_apellido.setBackground(Color.red);
+            validación++;
+        }
+        
+        if(pass.equals("")){
+            txt_contraseña.setBackground(Color.red);
+            validación++;
+        }
+        
+        if (permisos_cmb==1){
+            permisos_string = "Administrador";
+        }else if (permisos_cmb==2){
+            permisos_string = "Trabajador";
+        }
+        
+        try {
+            Connection cn = Connection.ConnectionPool();
+            PreparedStatement pat = cn.prepareStatement(
+                "select name_admin from admins where name_admin = '"+ nombre + "'");
+            ResultSet rs = pat.executedQuery();
+            if(rs.next()){
+                txt_nombre.setBackground(Color.red);
+                JOptionPane.showMessageDialog(null,"Nombre de Usuario no dispobile");
+            }else{
+            }
+            
+        } catch (SQLException e){
+            System.err.println("Error en validar nombre de usuario");
+            JOptionPane.showMessageDialog(null,"Error al comparar usuario!!, contacte al administrador");
+        }
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -189,8 +241,8 @@ public class RegistrarUsuarios extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cmb_niveles;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
