@@ -52,6 +52,9 @@ public class LoginCtr implements ActionListener{
             } else{
                 this.adminId = (int) resultList.get(0).get("id_admin");
                 this.administrador.setId_admin((int) resultList.get(0).get("id_admin"));
+                this.administrador.setName_admin(String.valueOf(resultList.get(0).get("name_admin")));
+                this.administrador.setAp_admin(String.valueOf(resultList.get(0).get("ap_admin")));
+                this.administrador.setPass_admin(String.valueOf(resultList.get(0).get("pass_admin")));
                 System.out.println(resultList);
             }
         } catch (SQLException ex) {
