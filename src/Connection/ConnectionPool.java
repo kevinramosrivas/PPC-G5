@@ -91,4 +91,20 @@ public class ConnectionPool {
         }
         
     }
+    public void makeUpdate(String sql) throws SQLException{
+        ConnectionPool instancia = ConnectionPool.getInstance();
+        Connection conexion = null; 
+        PreparedStatement consulta = null;
+        try{              
+            conexion = instancia.getConnection();
+            consulta = conexion.prepareStatement(sql);
+            consulta.executeUpdate();
+
+
+        }finally{
+            instancia.closeStatement(consulta);
+            instancia.closeConnection(conexion);
+        }
+        
+    }
 }

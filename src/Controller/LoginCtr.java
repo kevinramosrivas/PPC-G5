@@ -6,6 +6,8 @@ package Controller;
 
 import Connection.ConnectionPool;
 import Interface.Login;
+import Interface.admin_menu;
+import Model.Admin;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,7 +22,8 @@ import java.util.logging.Logger;
 
 public class LoginCtr implements ActionListener{
     Login loginui;
-    private int adminId = 0;
+    static public int adminId = 0;
+    public Admin administrador = Model.Admin.administrador;
     public LoginCtr(){
         loginui = new Login();
         loginui.btnLogin.addActionListener(this);
@@ -33,10 +36,7 @@ public class LoginCtr implements ActionListener{
         int pass = Integer.parseInt(new String(this.loginui.pass.getPassword()));
         boolean empty = searchAdmin(id,pass);
         if (!empty){
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException ex) {
-            }
+            admin_menu admin = new admin_menu();
             loginui.dispose();
         }
     }
@@ -51,6 +51,10 @@ public class LoginCtr implements ActionListener{
                 this.loginui.prob.setForeground(Color.red);
             } else{
                 this.adminId = (int) resultList.get(0).get("id_admin");
+                this.administrador.setId_admin((int) resultList.get(0).get("id_admin"));
+                this.administrador.setName_admin(String.valueOf(resultList.get(0).get("name_admin")));
+                this.administrador.setAp_admin(String.valueOf(resultList.get(0).get("ap_admin")));
+                this.administrador.setPass_admin(String.valueOf(resultList.get(0).get("pass_admin")));
                 System.out.println(resultList);
             }
         } catch (SQLException ex) {
