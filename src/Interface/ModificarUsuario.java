@@ -236,8 +236,8 @@ public class ModificarUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable_usuarios;
+    public javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JTable jTable_usuarios;
     public javax.swing.JTextField txt_apellido;
     public javax.swing.JPasswordField txt_contraseña;
     public javax.swing.JTextField txt_nombre;

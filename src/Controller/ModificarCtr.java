@@ -28,23 +28,42 @@ public class ModificarCtr implements ActionListener {
     public ModificarCtr(){
         modificarui = new ModificarUsuario();
         modificarui.btn_actualizar.addActionListener(this);
-    
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        
         if(e.getSource()== this.modificarui.btn_actualizar){
             DefaultTableModel model = new DefaultTableModel();
+            boolean isValidate;
+            int permisos_cmb = modificarui.cmb_niveles.getSelectedIndex()+1 ;
+            String permisos_string = "";
+            
+            if (permisos_cmb==1){
+                permisos_string = "Administrador";
+            }else if (permisos_cmb==2){
+                permisos_string = "Trabajador";
+            }
             
             
+            if(permisos_string.equalsIgnoreCase("Administrador")){
+                    System.out.println("Consular usuario administrador");
+                    String sql = String.format(
+                            "select id_admin, name_admin, ap_admin , pass_admin from admins");
+                    System.out.println(sql);
+                    try {
+                        new ConnectionPool().makeUpdate(sql);
+                        modificarui.jTable_usuarios = new JTable();
+                        modificarui.
+                    }catch (SQLException ex) {
+                        System.out.println(ex);
+                    }
+                    
+                    
             
             
-            int filas;
-            Admin admin = new Admin();
-            DefaultTableModel mdlTabla;
-            this.modificarui.setLocationRelativeTo(null);
-            modificarui.jTable1.setModel()
-            
+            }
         }
-    }
-}
+    }        
+
+
