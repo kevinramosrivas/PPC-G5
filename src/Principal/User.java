@@ -1,8 +1,7 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Project/Maven2/JavaApp/src/main/java/${packagePath}/${mainClassName}.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 package Principal;
 
 import Controller.LoginCtr;
@@ -11,9 +10,8 @@ import Controller.LoginCtr;
  *
  * @author mildr
  */
-public class Admin {
-
+public class User {
     public static void main(String[] args) {
-        LoginCtr adlog = new LoginCtr("admins");
+        LoginCtr userLog = new LoginCtr("users");
     }
 }
