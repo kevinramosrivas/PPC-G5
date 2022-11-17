@@ -15,6 +15,11 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JTable;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -27,15 +32,13 @@ public class ModificarCtr implements ActionListener {
     ModificarUsuario modificarui;
     public ModificarCtr(){
         modificarui = new ModificarUsuario();
-        modificarui.btn_actualizar.addActionListener(this);
+        modificarui.jButton3.addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         
-        if(e.getSource()== this.modificarui.btn_actualizar){
             DefaultTableModel model = new DefaultTableModel();
-            boolean isValidate;
             int permisos_cmb = modificarui.cmb_niveles.getSelectedIndex()+1 ;
             String permisos_string = "";
             
@@ -44,26 +47,51 @@ public class ModificarCtr implements ActionListener {
             }else if (permisos_cmb==2){
                 permisos_string = "Trabajador";
             }
-            
-            
+                        
             if(permisos_string.equalsIgnoreCase("Administrador")){
+                    
+                try{
                     System.out.println("Consular usuario administrador");
+                    
+                    modificarui.jTable_usuarios = new JTable(model);
+                    modificarui.jScrollPane1.setViewportView(modificarui.jTable_usuarios);
+                        
+                    model.addColumn("Id");
+                    model.addColumn("Nombre");
+                    model.addColumn("Apellidos");
+                    model.addColumn("Contraseña");
+                    List<Map<String, Object>> resultList = new ArrayList<>();
                     String sql = String.format(
+                          //   "SELECT * FROM admins where id_admin=%");
                             "select id_admin, name_admin, ap_admin , pass_admin from admins");
                     System.out.println(sql);
+                    
                     try {
-                        new ConnectionPool().makeUpdate(sql);
-                        modificarui.jTable_usuarios = new JTable();
-                        modificarui.
-                    }catch (SQLException ex) {
-                        System.out.println(ex);
+                        resultList = new ConnectionPool().makeConsult(sql);
+                        
+                        for (int i=0;i<resultList.size();i++){
+                            model.addColumn(String.valueOf(resultList.get(i).get("id_admin")));
+                            model.addColumn(String.valueOf(resultList.get(i).get("name_admin")));
+                            model.addColumn(String.valueOf(resultList.get(i).get("ap_admin")));
+                            model.addColumn(String.valueOf(resultList.get(i).get("pass_admin")));
+                           
+                        }    
+                        
+                        //model.addRow(model);
+                       
+                        
+                    } catch (SQLException ex) {
+                        System.err.println("Error al llenar tabla"+ ex);
+                        JOptionPane.showMessageDialog(null, "Error al mostrar información, Contactar al administrador");
+                        //System.out.println(ex);
                     }
-                    
-                    
-            
-            
+                }catch (Exception exc) {
+                        System.err.println(exc);
+                }
             }
         }
-    }        
+    }
+
+
 
 

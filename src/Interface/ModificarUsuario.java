@@ -26,6 +26,7 @@ public class ModificarUsuario extends javax.swing.JFrame {
         setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        
     }
 
     /**
@@ -230,7 +231,7 @@ public class ModificarUsuario extends javax.swing.JFrame {
     public javax.swing.JButton btn_actualizar;
     public javax.swing.JComboBox<String> cmb_niveles;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
+    public javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
