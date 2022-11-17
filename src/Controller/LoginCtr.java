@@ -22,9 +22,10 @@ import java.util.logging.Logger;
 
 public class LoginCtr implements ActionListener{
     Login loginui;
-    static public int adminId = 0;
+    private String type="";
     public Admin administrador = Model.Admin.administrador;
-    public LoginCtr(){
+    public LoginCtr(String type){
+        this.type=type;
         loginui = new Login();
         loginui.btnLogin.addActionListener(this);
     }
@@ -33,28 +34,31 @@ public class LoginCtr implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         this.loginui.prob.setText("");
         int id = Integer.parseInt(this.loginui.id.getText());
-        int pass = Integer.parseInt(new String(this.loginui.pass.getPassword()));
+        String pass = new String(this.loginui.pass.getPassword());
         boolean empty = searchAdmin(id,pass);
         if (!empty){
-            admin_menu admin = new admin_menu();
             loginui.dispose();
         }
+        if ("admins".equals(this.type)){
+            admin_menu admin = new admin_menu();
+        }
     }
-    public boolean searchAdmin(int id, int pass){
+    public boolean searchAdmin(int id, String pass){
+        String type2 = this.type.substring(0, this.type.length()-1); //Substring user o admin
         List<Map<String, Object>> resultList = new ArrayList<>();
-        String sql = String.format("select * from admins where id_admin=%s and pass_admin=%s",
-                id,pass);
+        String sql = String.format("select * from %s where id_%s=%s and pass_%s=%s",
+                this.type,type2,id, 
+                type2,pass);
         try {
             resultList = new ConnectionPool().makeConsult(sql);
             if (resultList.isEmpty()) {
                 this.loginui.prob.setText("Datos incorrectos");
                 this.loginui.prob.setForeground(Color.red);
             } else{
-                this.adminId = (int) resultList.get(0).get("id_admin");
-                this.administrador.setId_admin((int) resultList.get(0).get("id_admin"));
-                this.administrador.setName_admin(String.valueOf(resultList.get(0).get("name_admin")));
-                this.administrador.setAp_admin(String.valueOf(resultList.get(0).get("ap_admin")));
-                this.administrador.setPass_admin(String.valueOf(resultList.get(0).get("pass_admin")));
+                this.administrador.setId_admin((int) resultList.get(0).get("id_"+type2));
+                this.administrador.setName_admin(String.valueOf(resultList.get(0).get("name_"+type2)));
+                this.administrador.setAp_admin(String.valueOf(resultList.get(0).get("ap_"+type2)));
+                this.administrador.setPass_admin(String.valueOf(resultList.get(0).get("pass_"+type2)));
                 System.out.println(resultList);
             }
         } catch (SQLException ex) {
@@ -62,7 +66,4 @@ public class LoginCtr implements ActionListener{
         }
         return resultList.isEmpty();
     }
-    public Integer getAdminId(){
-        return this.adminId;
-    } 
 }
