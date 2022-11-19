@@ -64,7 +64,7 @@ public class GraficosCtr  implements ActionListener {
                         List<Map<String, Object>> resultList = new ArrayList<>();
                         String sql = String.format(
                               //   "SELECT * FROM admins where id_admin=%");
-                                "select id_pc, estado, id_labo, fecha_mod,obs from computer");
+                                "select id_pc, estado, id_lab, fecha_mod,obs from computer");
                         System.out.println(sql);
 
                         try {
@@ -73,7 +73,7 @@ public class GraficosCtr  implements ActionListener {
                             for (int i=0;i<resultList.size();i++){
                                 model.addRow(new Object[]{String.valueOf(resultList.get(i).get("id_pc")),
                                     String.valueOf(resultList.get(i).get("estado")),
-                                    String.valueOf(resultList.get(i).get("id_labo")),
+                                    String.valueOf(resultList.get(i).get("id_lab")),
                                     String.valueOf(resultList.get(i).get("fecha_mod")),
                                     String.valueOf(resultList.get(i).get("obs"))
                                 });
