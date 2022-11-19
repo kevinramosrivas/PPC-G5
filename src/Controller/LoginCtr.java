@@ -31,6 +31,7 @@ public class LoginCtr implements ActionListener{
         this.type=type;
         loginui = new Login();
         loginui.btnLogin.addActionListener(this);
+        loginui.tituloLogin.setText("LOGIN DE "+type.toUpperCase());
     }
 
     @Override

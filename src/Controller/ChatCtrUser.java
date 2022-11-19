@@ -28,20 +28,6 @@ public class ChatCtrUser extends Thread
     final int puerto = 8000;
     private final AtomicBoolean running = new AtomicBoolean(false);
     
-    
-    public ChatCtrUser()
-    {
-        try{
-           ss=new ServerSocket(puerto);   
-           s=ss.accept();
-           entradaSocket=new InputStreamReader(s.getInputStream());
-           entrada=new BufferedReader(entradaSocket);     
-           salida=new DataOutputStream(s.getOutputStream());   
-        }catch(Exception e){
-            System.out.println(e);
-        };
-    
-    }
     public ChatCtrUser(String ip)
     {
         try{
