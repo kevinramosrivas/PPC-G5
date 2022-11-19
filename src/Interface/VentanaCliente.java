@@ -8,6 +8,7 @@ package Interface;
 import Controller.ChatCtrUser;
 import Model.Admin;
 import Model.User;
+import javax.swing.WindowConstants;
 
 /**
  *
@@ -20,7 +21,9 @@ public class VentanaCliente extends javax.swing.JFrame {
     public VentanaCliente() {
         initComponents();
         setVisible(true);
+        setLocationRelativeTo(null);
         this.NickName.setText(usuario.getName_user());
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**

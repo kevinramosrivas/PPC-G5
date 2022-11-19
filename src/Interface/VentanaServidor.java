@@ -6,6 +6,7 @@
 package Interface;
 import Controller.ChatCtrAdmin;
 import Model.Admin;
+import javax.swing.WindowConstants;
 
 
 /**
@@ -22,7 +23,9 @@ public class VentanaServidor extends javax.swing.JFrame {
     public VentanaServidor() {
         initComponents();
         setVisible(true);
+        setLocationRelativeTo(null);
         this.Name.setText(administrador.getName_admin());
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**

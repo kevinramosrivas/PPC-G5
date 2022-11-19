@@ -33,7 +33,6 @@ public class ModificarCtr implements ActionListener {
     public static String user_update = "";
     ModificarUsuario modificarui;
     DefaultTableModel model = new DefaultTableModel();
-    
     public ModificarCtr(){
         modificarui = new ModificarUsuario();
         modificarui.btn_buscar.addActionListener(this);
@@ -44,7 +43,6 @@ public class ModificarCtr implements ActionListener {
         model.addColumn("Id");
         model.addColumn("Nombre");
         model.addColumn("Apellidos");
-        model.addColumn("Contraseña");
         
     }
     public void limpiarTabla(DefaultTableModel modelo ,JTable tabla){
@@ -81,8 +79,7 @@ public class ModificarCtr implements ActionListener {
                             for (int i=0;i<resultList.size();i++){
                                 model.addRow(new Object[]{String.valueOf(resultList.get(i).get("id_admin")),
                                     String.valueOf(resultList.get(i).get("name_admin")),
-                                    String.valueOf(resultList.get(i).get("ap_admin")),
-                                    String.valueOf(resultList.get(i).get("pass_admin"))
+                                    String.valueOf(resultList.get(i).get("ap_admin"))
                                 });
 
                             }
@@ -111,8 +108,7 @@ public class ModificarCtr implements ActionListener {
                             for (int i=0;i<resultList.size();i++){
                                 model.addRow(new Object[]{String.valueOf(resultList.get(i).get("id_user")),
                                     String.valueOf(resultList.get(i).get("name_user")),
-                                    String.valueOf(resultList.get(i).get("ap_user")),
-                                    String.valueOf(resultList.get(i).get("pass_user"))
+                                    String.valueOf(resultList.get(i).get("ap_user"))
                                 });
 
                             }
@@ -136,7 +132,7 @@ public class ModificarCtr implements ActionListener {
                int row = modificarui.jTable_usuarios.getSelectedRow();
                modificarui.txt_nombre.setText(modificarui.jTable_usuarios.getValueAt(row, 1).toString());
                modificarui.txt_apellido.setText(modificarui.jTable_usuarios.getValueAt(row, 2).toString());
-               modificarui.txt_contraseña.setText(modificarui.jTable_usuarios.getValueAt(row, 3).toString());
+               modificarui.txt_contraseña.setText("");
                
             }
         }

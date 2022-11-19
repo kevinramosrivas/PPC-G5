@@ -14,6 +14,7 @@ public class user_menu extends javax.swing.JFrame {
     public user_menu() {
         initComponents();
         reloj.start();
+        setLocationRelativeTo(null);
         setVisible(true);
     }
 

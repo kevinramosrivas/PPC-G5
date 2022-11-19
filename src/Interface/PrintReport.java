@@ -15,6 +15,7 @@ public class PrintReport extends javax.swing.JFrame {
     public PrintReport() {
         initComponents();
         setVisible(true);
+        setLocationRelativeTo(null);
     }
 
     /**
