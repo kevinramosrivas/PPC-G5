@@ -5,6 +5,10 @@
 package Interface;
 
 import Model.Admin;
+import java.awt.Point;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JTable;
 import javax.swing.WindowConstants;
 
 /**
@@ -19,10 +23,9 @@ public class ModificarUsuario extends javax.swing.JFrame {
      */
     public ModificarUsuario() {
         initComponents();
-        
         setVisible(true);
         setTitle("Modificar usuario - Sesión de " + administrador.getName_admin());
-        setSize(534,437);
+        setSize(600,500);
         setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
@@ -49,9 +52,9 @@ public class ModificarUsuario extends javax.swing.JFrame {
         txt_contraseña = new javax.swing.JPasswordField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_usuarios = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
         btn_buscar = new javax.swing.JButton();
         btn_actualizar = new javax.swing.JButton();
+        btnLlenar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -127,19 +130,14 @@ public class ModificarUsuario extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable_usuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable_usuariosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable_usuarios);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 490, 130));
-
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jButton1.setText("REGRESAR");
-        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 400, 150, -1));
 
         btn_buscar.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btn_buscar.setText("BUSCAR USUARIOS");
@@ -161,6 +159,9 @@ public class ModificarUsuario extends javax.swing.JFrame {
         });
         getContentPane().add(btn_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, 150, -1));
 
+        btnLlenar.setText("SELECCIONAR");
+        getContentPane().add(btnLlenar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 410, 130, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -180,10 +181,6 @@ public class ModificarUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_contraseñaActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_buscarActionPerformed
@@ -192,46 +189,16 @@ public class ModificarUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_actualizarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ModificarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ModificarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ModificarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ModificarUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void jTable_usuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_usuariosMouseClicked
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ModificarUsuario().setVisible(true);
-            }
-        });
-    }
+    }//GEN-LAST:event_jTable_usuariosMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnLlenar;
     public javax.swing.JButton btn_actualizar;
     public javax.swing.JButton btn_buscar;
     public javax.swing.JComboBox<String> cmb_niveles;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

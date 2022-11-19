@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import javax.swing.JTable;
 import java.sql.*;
 import java.util.ArrayList;
@@ -31,15 +32,32 @@ public class ModificarCtr implements ActionListener {
     
     public static String user_update = "";
     ModificarUsuario modificarui;
+    DefaultTableModel model = new DefaultTableModel();
+    
     public ModificarCtr(){
         modificarui = new ModificarUsuario();
         modificarui.btn_buscar.addActionListener(this);
+        modificarui.btn_actualizar.addActionListener(this);
+        modificarui.btnLlenar.addActionListener(this);
+        modificarui.jTable_usuarios = new JTable(model);
+        modificarui.jScrollPane1.setViewportView(modificarui.jTable_usuarios);
+        model.addColumn("Id");
+        model.addColumn("Nombre");
+        model.addColumn("Apellidos");
+        model.addColumn("Contraseña");
+        
     }
-
-    @Override
+    public void limpiarTabla(DefaultTableModel modelo ,JTable tabla){
+        for (int i = 0; i < tabla.getRowCount(); i++) {
+            modelo.removeRow(i);
+            i-=1;
+        }
+    }
     public void actionPerformed(ActionEvent e) {
+        
             if(e.getSource() == modificarui.btn_buscar){
-                DefaultTableModel model = new DefaultTableModel();
+                
+                limpiarTabla(model,modificarui.jTable_usuarios);
                 int permisos_cmb = modificarui.cmb_niveles.getSelectedIndex()+1 ;
                 String permisos_string = "";
                 if (permisos_cmb==1){
@@ -49,17 +67,8 @@ public class ModificarCtr implements ActionListener {
                 }
 
                 if(permisos_string.equalsIgnoreCase("Administrador")){
-
                     try{
                         System.out.println("Consular usuario administrador");
-
-                        modificarui.jTable_usuarios = new JTable(model);
-                        modificarui.jScrollPane1.setViewportView(modificarui.jTable_usuarios);
-
-                        model.addColumn("Id");
-                        model.addColumn("Nombre");
-                        model.addColumn("Apellidos");
-                        model.addColumn("Contraseña");
                         List<Map<String, Object>> resultList = new ArrayList<>();
                         String sql = String.format(
                               //   "SELECT * FROM admins where id_admin=%");
@@ -90,14 +99,6 @@ public class ModificarCtr implements ActionListener {
                 else if(permisos_string.equalsIgnoreCase("Trabajador")){
                     try{
                         System.out.println("Consular usuario trabajador");
-
-                        modificarui.jTable_usuarios = new JTable(model);
-                        modificarui.jScrollPane1.setViewportView(modificarui.jTable_usuarios);
-
-                        model.addColumn("Id");
-                        model.addColumn("Nombre");
-                        model.addColumn("Apellidos");
-                        model.addColumn("Contraseña");
                         List<Map<String, Object>> resultList = new ArrayList<>();
                         String sql = String.format(
                               //   "SELECT * FROM admins where id_admin=%");
@@ -127,8 +128,20 @@ public class ModificarCtr implements ActionListener {
                 }
                 
             }
+            if(e.getSource() == modificarui.btn_actualizar){
+                
+                
+            }
+            if(e.getSource() == modificarui.btnLlenar){
+               int row = modificarui.jTable_usuarios.getSelectedRow();
+               modificarui.txt_nombre.setText(modificarui.jTable_usuarios.getValueAt(row, 1).toString());
+               modificarui.txt_apellido.setText(modificarui.jTable_usuarios.getValueAt(row, 2).toString());
+               modificarui.txt_contraseña.setText(modificarui.jTable_usuarios.getValueAt(row, 3).toString());
+               
+            }
         }
-    }
+
+}
 
 
 
