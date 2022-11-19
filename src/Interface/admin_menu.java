@@ -76,6 +76,11 @@ public class admin_menu extends javax.swing.JFrame {
 
         jButton6.setText("Chat");
         jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -159,6 +164,10 @@ public class admin_menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         RegisterCtr register = new RegisterCtr();
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        VentanaServidor servidor = new VentanaServidor();
+    }//GEN-LAST:event_jButton6ActionPerformed
 
 //    public static String fecha(){
 //        Date fecha = new Date();
