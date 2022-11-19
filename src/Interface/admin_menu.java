@@ -3,6 +3,7 @@ package Interface;
 
 import Controller.PrintReportCtr;
 import Controller.RegisterCtr;
+import Controller.ModificarCtr;
 import Controller.watchDemonAdmin;
 import Model.Admin;
 import java.util.*;
@@ -55,6 +56,11 @@ public class admin_menu extends javax.swing.JFrame {
         });
 
         jButton3.setText("MODIFICAR USUARIO");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/logout_icon.png"))); // NOI18N
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -165,21 +171,15 @@ public class admin_menu extends javax.swing.JFrame {
         RegisterCtr register = new RegisterCtr();
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        ModificarCtr modificar = new ModificarCtr();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         VentanaServidor servidor = new VentanaServidor();
     }//GEN-LAST:event_jButton6ActionPerformed
 
-//    public static String fecha(){
-//        Date fecha = new Date();
-//        SimpleDateFormat formatofecha = new SimpleDateFormat("dd/MM/YYYY");
-//        return formatofecha.format(fecha);
-//    }
-//    
-//    public static String hora(){
-//        Date fecha2 = new Date();
-//        SimpleDateFormat formatofecha2 = new SimpleDateFormat("HH:mm");
-//        return formatofecha2.format(fecha2);
-//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
