@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  *
@@ -24,7 +25,8 @@ public class ChatCtrUser extends Thread
     private InputStreamReader entradaSocket;  
     private DataOutputStream salida;          
     private BufferedReader entrada;           
-    final int puerto = 8000; 
+    final int puerto = 8000;
+    private final AtomicBoolean running = new AtomicBoolean(false);
     
     
     public ChatCtrUser()
@@ -53,10 +55,14 @@ public class ChatCtrUser extends Thread
              System.out.println(e);
          };
      }
+    public void parar() {
+        running.set(false);
+    }
      public void run()
      {             
          String texto="text";
-         while(true)
+         running.set(true);
+         while(running.get())
          {
              try{
                   texto=entrada.readLine();
@@ -92,10 +98,5 @@ public class ChatCtrUser extends Thread
            }catch(IOException e){
                System.out.println(e);
            };
-        try{
-            ss.close();
-            }catch(IOException e){
-                System.out.println(e);
-            };
      }   
 }

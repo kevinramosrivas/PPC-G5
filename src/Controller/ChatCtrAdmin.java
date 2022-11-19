@@ -6,12 +6,14 @@ package Controller;
 
 import Interface.VentanaCliente;
 import Interface.VentanaServidor;
+import Model.Admin;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  *
@@ -25,6 +27,7 @@ public class ChatCtrAdmin extends Thread
     private DataOutputStream salida;           //data output for send messages
     private BufferedReader entrada;            //data entry for read messages
     final int puerto=8000;            // computer port
+    private final AtomicBoolean running = new AtomicBoolean(false);
  
     public ChatCtrAdmin()                    
     {
@@ -55,11 +58,19 @@ public class ChatCtrAdmin extends Thread
              System.out.println(e);
          };
      }
+
+    /**
+     *
+     */
+    public void parar() {
+        running.set(false);
+    }
     
     public void run()
     {
       String texto="text";
-      while(true)
+      running.set(true);
+      while(running.get())
       {
         try{
           texto=entrada.readLine();

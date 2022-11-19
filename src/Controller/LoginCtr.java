@@ -9,6 +9,7 @@ import Interface.Login;
 import Interface.admin_menu;
 import Interface.user_menu;
 import Model.Admin;
+import Model.User;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,6 +26,7 @@ public class LoginCtr implements ActionListener{
     Login loginui;
     private String type="";
     public Admin administrador = Model.Admin.administrador;
+    public User usuario = Model.User.usuario;
     public LoginCtr(String type){
         this.type=type;
         loginui = new Login();
@@ -59,11 +61,20 @@ public class LoginCtr implements ActionListener{
                 this.loginui.prob.setText("Datos incorrectos");
                 this.loginui.prob.setForeground(Color.red);
             } else{
-                this.administrador.setId_admin((int) resultList.get(0).get("id_"+type2));
-                this.administrador.setName_admin(String.valueOf(resultList.get(0).get("name_"+type2)));
-                this.administrador.setAp_admin(String.valueOf(resultList.get(0).get("ap_"+type2)));
-                this.administrador.setPass_admin(String.valueOf(resultList.get(0).get("pass_"+type2)));
-                System.out.println(resultList);
+                if ("admins".equals(this.type)){
+                    this.administrador.setName_admin(String.valueOf(resultList.get(0).get("name_"+type2)));
+                    this.administrador.setAp_admin(String.valueOf(resultList.get(0).get("ap_"+type2)));
+                    this.administrador.setPass_admin(String.valueOf(resultList.get(0).get("pass_"+type2)));
+                    this.administrador.setId_admin((int) resultList.get(0).get("id_"+type2));
+                    System.out.println(resultList);
+                }
+                else if("users".equals(this.type)){
+                    this.usuario.setName_user(String.valueOf(resultList.get(0).get("name_"+type2)));
+                    this.usuario.setAp_user(String.valueOf(resultList.get(0).get("ap_"+type2)));
+                    this.usuario.setPass_user(String.valueOf(resultList.get(0).get("pass_"+type2)));
+                    this.usuario.setId_user((int) resultList.get(0).get("id_"+type2));
+                    System.out.println(resultList);
+                }
             }
         } catch (SQLException ex) {
             System.out.println(ex);
