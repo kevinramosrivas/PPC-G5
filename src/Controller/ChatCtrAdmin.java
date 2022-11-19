@@ -46,18 +46,6 @@ public class ChatCtrAdmin extends Thread
     
     }
     
-    public ChatCtrAdmin(String ip)
-    {
-        try{
-
-           s=new Socket(ip,this.puerto);   
-           entradaSocket=new InputStreamReader(s.getInputStream());
-           entrada=new BufferedReader(entradaSocket);    
-           salida=new DataOutputStream(s.getOutputStream());
-         }catch(Exception e){
-             System.out.println(e);
-         };
-     }
 
     /**
      *

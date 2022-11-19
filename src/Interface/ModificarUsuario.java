@@ -48,8 +48,6 @@ public class ModificarUsuario extends javax.swing.JFrame {
         txt_nombre = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txt_apellido = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        txt_contraseña = new javax.swing.JPasswordField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_usuarios = new javax.swing.JTable();
         btn_buscar = new javax.swing.JButton();
@@ -105,20 +103,6 @@ public class ModificarUsuario extends javax.swing.JFrame {
         });
         getContentPane().add(txt_apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 140, 210, -1));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel4.setText("Contraseña:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
-
-        txt_contraseña.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        txt_contraseña.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt_contraseña.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        txt_contraseña.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_contraseñaActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txt_contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 210, -1));
-
         jTable_usuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -157,7 +141,7 @@ public class ModificarUsuario extends javax.swing.JFrame {
                 btn_actualizarActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, 150, -1));
+        getContentPane().add(btn_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 150, -1));
 
         btnLlenar.setText("SELECCIONAR");
         getContentPane().add(btnLlenar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 410, 130, -1));
@@ -176,10 +160,6 @@ public class ModificarUsuario extends javax.swing.JFrame {
     private void txt_apellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_apellidoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_apellidoActionPerformed
-
-    private void txt_contraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_contraseñaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_contraseñaActionPerformed
 
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
         // TODO add your handling code here:
@@ -202,12 +182,10 @@ public class ModificarUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     public javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable jTable_usuarios;
     public javax.swing.JTextField txt_apellido;
-    public javax.swing.JPasswordField txt_contraseña;
     public javax.swing.JTextField txt_nombre;
     // End of variables declaration//GEN-END:variables
 }

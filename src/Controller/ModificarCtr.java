@@ -31,8 +31,14 @@ import javax.swing.JOptionPane;
 public class ModificarCtr implements ActionListener {
     
     public static String user_update = "";
-    ModificarUsuario modificarui;
-    DefaultTableModel model = new DefaultTableModel();
+    public ModificarUsuario modificarui;
+    public DefaultTableModel model = new DefaultTableModel();
+    public List<ModificateThread> hilos = new ArrayList<ModificateThread>();
+    public int id = -1;
+    public String nombre = null;
+    public String apellido = null;
+    public String contrasena = null;
+    public String permisos_string = "";
     public ModificarCtr(){
         modificarui = new ModificarUsuario();
         modificarui.btn_buscar.addActionListener(this);
@@ -57,7 +63,6 @@ public class ModificarCtr implements ActionListener {
                 
                 limpiarTabla(model,modificarui.jTable_usuarios);
                 int permisos_cmb = modificarui.cmb_niveles.getSelectedIndex()+1 ;
-                String permisos_string = "";
                 if (permisos_cmb==1){
                     permisos_string = "Administrador";
                 }else if (permisos_cmb==2){
@@ -125,14 +130,22 @@ public class ModificarCtr implements ActionListener {
                 
             }
             if(e.getSource() == modificarui.btn_actualizar){
-                
-                
+                nombre = modificarui.txt_nombre.getText();
+                apellido = modificarui.txt_apellido.getText();
+                if(hilos.size()<5){
+                   hilos.add(new ModificateThread(id,nombre,apellido,permisos_string));
+                }
+                else{
+                    System.out.println("Numero maximo de peticiones");
+                }
             }
             if(e.getSource() == modificarui.btnLlenar){
                int row = modificarui.jTable_usuarios.getSelectedRow();
-               modificarui.txt_nombre.setText(modificarui.jTable_usuarios.getValueAt(row, 1).toString());
-               modificarui.txt_apellido.setText(modificarui.jTable_usuarios.getValueAt(row, 2).toString());
-               modificarui.txt_contraseña.setText("");
+               id = Integer.parseInt(modificarui.jTable_usuarios.getValueAt(row, 0).toString());
+               nombre = modificarui.jTable_usuarios.getValueAt(row, 1).toString();
+               apellido = modificarui.jTable_usuarios.getValueAt(row, 2).toString();
+               modificarui.txt_nombre.setText(nombre);
+               modificarui.txt_apellido.setText(apellido);
                
             }
         }
