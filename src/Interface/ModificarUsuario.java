@@ -141,7 +141,7 @@ public class ModificarUsuario extends javax.swing.JFrame {
                 btn_actualizarActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 150, -1));
+        getContentPane().add(btn_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, 150, -1));
 
         btnLlenar.setText("SELECCIONAR");
         getContentPane().add(btnLlenar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 410, 130, -1));
