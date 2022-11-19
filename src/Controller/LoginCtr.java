@@ -7,6 +7,7 @@ package Controller;
 import Connection.ConnectionPool;
 import Interface.Login;
 import Interface.admin_menu;
+import Interface.user_menu;
 import Model.Admin;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -41,6 +42,9 @@ public class LoginCtr implements ActionListener{
         }
         if ("admins".equals(this.type)){
             admin_menu admin = new admin_menu();
+        }
+        if("users".equals(this.type)){
+            user_menu user = new user_menu();
         }
     }
     public boolean searchAdmin(int id, String pass){
