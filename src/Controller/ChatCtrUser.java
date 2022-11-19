@@ -46,19 +46,19 @@ public class ChatCtrUser extends Thread
     }
      public void run()
      {             
-         String texto="text";
+         String texto="";
          running.set(true);
          while(running.get())
          {
-             try{
+            try{
                   texto=entrada.readLine();
                   Interface.VentanaCliente. jTextArea1.setText(Interface.VentanaCliente.jTextArea1.getText()+"\n"+texto);
-                }catch(IOException e){
+            }catch(IOException e){
                     System.out.println(e);
-                };
+            };
          }
      }
-     public void enviarMSG(String msg)    //method for send a messages
+     public void enviarMSG(String msg)
      {
         try{
             salida.writeUTF(msg+"\n");
@@ -67,7 +67,7 @@ public class ChatCtrUser extends Thread
         };
      }
    
-     public String leerMSG()                //method for read a messages
+     public String leerMSG()
      { 
        try{
             return entrada.readLine();
