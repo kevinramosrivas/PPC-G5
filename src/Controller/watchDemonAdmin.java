@@ -5,6 +5,7 @@
 package Controller;
 
 import Interface.admin_menu;
+import Interface.user_menu;
 import static java.lang.Thread.sleep;
 import java.time.LocalDateTime;
 import java.util.logging.Level;
@@ -14,14 +15,16 @@ import java.util.logging.Logger;
  *
  * @author ramos
  */
-public class watchDemon extends Thread{
+public class watchDemonAdmin extends Thread{
     public int hours;
     public int minutes;
     public int seconds;
     public admin_menu adminMenu;
-    public watchDemon(admin_menu menu){
+
+    public watchDemonAdmin(admin_menu menu){
         this.adminMenu = menu;
     }
+    
     public void run(){
         while(true){
             LocalDateTime locaDate = LocalDateTime.now();
@@ -29,11 +32,12 @@ public class watchDemon extends Thread{
             this.minutes = locaDate.getMinute();
             this.seconds = locaDate.getSecond();
             try {
-                adminMenu.jLabel3.setText(hours  + ":"+ minutes +":"+seconds);
+                adminMenu.relojLabel.setText(hours  + ":"+ minutes +":"+seconds);
                 sleep(10);
             } catch (InterruptedException ex) {
                 System.out.println(ex);
             }
+            
         }
           
     }
