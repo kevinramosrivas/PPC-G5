@@ -17,6 +17,7 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.io.FileOutputStream;
 import Connection.ConnectionPool;
+import javax.swing.JOptionPane;
 /**
  *
  * @author ramos
@@ -59,6 +60,7 @@ public class WriterThread extends Thread{
                 System.out.println(ex);
             }
             documento.close();
+            JOptionPane.showMessageDialog(null, "Informe del laboratorio: "+this.nameLab+" fue creado con exito");
 
         }catch(Exception exc){
             System.out.println(exc);

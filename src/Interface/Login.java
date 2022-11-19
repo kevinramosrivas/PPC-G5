@@ -17,7 +17,7 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         id = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        tituloLogin = new javax.swing.JLabel();
         lb_id = new javax.swing.JLabel();
         lb_pass = new javax.swing.JLabel();
         btnLogin = new javax.swing.JButton();
@@ -32,8 +32,8 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setText("LOGIN");
+        tituloLogin.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        tituloLogin.setText("LOGIN");
 
         lb_id.setText("ID");
 
@@ -76,14 +76,14 @@ public class Login extends javax.swing.JFrame {
                                 .addComponent(pass, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(190, 190, 190)
-                        .addComponent(jLabel1)))
+                        .addComponent(tituloLogin)))
                 .addContainerGap(102, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
-                .addComponent(jLabel1)
+                .addComponent(tituloLogin)
                 .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -118,10 +118,10 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnLogin;
     public javax.swing.JTextField id;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lb_id;
     private javax.swing.JLabel lb_pass;
     public javax.swing.JPasswordField pass;
     public javax.swing.JLabel prob;
+    public javax.swing.JLabel tituloLogin;
     // End of variables declaration//GEN-END:variables
 }
