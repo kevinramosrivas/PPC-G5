@@ -22,6 +22,7 @@ import java.util.Map;
 import javax.swing.JOptionPane;
 
 
+
 /**
  *
  * @author USUARIO
@@ -32,62 +33,99 @@ public class ModificarCtr implements ActionListener {
     ModificarUsuario modificarui;
     public ModificarCtr(){
         modificarui = new ModificarUsuario();
-        modificarui.jButton3.addActionListener(this);
+        modificarui.btn_buscar.addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
-            DefaultTableModel model = new DefaultTableModel();
-            int permisos_cmb = modificarui.cmb_niveles.getSelectedIndex()+1 ;
-            String permisos_string = "";
-            
-            if (permisos_cmb==1){
-                permisos_string = "Administrador";
-            }else if (permisos_cmb==2){
-                permisos_string = "Trabajador";
-            }
-                        
-            if(permisos_string.equalsIgnoreCase("Administrador")){
-                    
-                try{
-                    System.out.println("Consular usuario administrador");
-                    
-                    modificarui.jTable_usuarios = new JTable(model);
-                    modificarui.jScrollPane1.setViewportView(modificarui.jTable_usuarios);
-                        
-                    model.addColumn("Id");
-                    model.addColumn("Nombre");
-                    model.addColumn("Apellidos");
-                    model.addColumn("Contraseña");
-                    List<Map<String, Object>> resultList = new ArrayList<>();
-                    String sql = String.format(
-                          //   "SELECT * FROM admins where id_admin=%");
-                            "select id_admin, name_admin, ap_admin , pass_admin from admins");
-                    System.out.println(sql);
-                    
-                    try {
-                        resultList = new ConnectionPool().makeConsult(sql);
-                        
-                        for (int i=0;i<resultList.size();i++){
-                            model.addColumn(String.valueOf(resultList.get(i).get("id_admin")));
-                            model.addColumn(String.valueOf(resultList.get(i).get("name_admin")));
-                            model.addColumn(String.valueOf(resultList.get(i).get("ap_admin")));
-                            model.addColumn(String.valueOf(resultList.get(i).get("pass_admin")));
-                           
-                        }    
-                        
-                        //model.addRow(model);
-                       
-                        
-                    } catch (SQLException ex) {
-                        System.err.println("Error al llenar tabla"+ ex);
-                        JOptionPane.showMessageDialog(null, "Error al mostrar información, Contactar al administrador");
-                        //System.out.println(ex);
-                    }
-                }catch (Exception exc) {
-                        System.err.println(exc);
+            if(e.getSource() == modificarui.btn_buscar){
+                DefaultTableModel model = new DefaultTableModel();
+                int permisos_cmb = modificarui.cmb_niveles.getSelectedIndex()+1 ;
+                String permisos_string = "";
+                if (permisos_cmb==1){
+                    permisos_string = "Administrador";
+                }else if (permisos_cmb==2){
+                    permisos_string = "Trabajador";
                 }
+
+                if(permisos_string.equalsIgnoreCase("Administrador")){
+
+                    try{
+                        System.out.println("Consular usuario administrador");
+
+                        modificarui.jTable_usuarios = new JTable(model);
+                        modificarui.jScrollPane1.setViewportView(modificarui.jTable_usuarios);
+
+                        model.addColumn("Id");
+                        model.addColumn("Nombre");
+                        model.addColumn("Apellidos");
+                        model.addColumn("Contraseña");
+                        List<Map<String, Object>> resultList = new ArrayList<>();
+                        String sql = String.format(
+                              //   "SELECT * FROM admins where id_admin=%");
+                                "select id_admin, name_admin, ap_admin , pass_admin from admins");
+                        System.out.println(sql);
+
+                        try {
+                            resultList = new ConnectionPool().makeConsult(sql);
+
+                            for (int i=0;i<resultList.size();i++){
+                                model.addRow(new Object[]{String.valueOf(resultList.get(i).get("id_admin")),
+                                    String.valueOf(resultList.get(i).get("name_admin")),
+                                    String.valueOf(resultList.get(i).get("ap_admin")),
+                                    String.valueOf(resultList.get(i).get("pass_admin"))
+                                });
+
+                            }
+
+                        } catch (SQLException ex) {
+                            System.err.println("Error al llenar tabla"+ ex);
+                            JOptionPane.showMessageDialog(null, "Error al mostrar información, Contactar al administrador");
+                            //System.out.println(ex);
+                        }
+                    }catch (Exception exc) {
+                            System.err.println(exc);
+                    }
+                }
+                else if(permisos_string.equalsIgnoreCase("Trabajador")){
+                    try{
+                        System.out.println("Consular usuario trabajador");
+
+                        modificarui.jTable_usuarios = new JTable(model);
+                        modificarui.jScrollPane1.setViewportView(modificarui.jTable_usuarios);
+
+                        model.addColumn("Id");
+                        model.addColumn("Nombre");
+                        model.addColumn("Apellidos");
+                        model.addColumn("Contraseña");
+                        List<Map<String, Object>> resultList = new ArrayList<>();
+                        String sql = String.format(
+                              //   "SELECT * FROM admins where id_admin=%");
+                                "SELECT * FROM `users`");
+                        System.out.println(sql);
+
+                        try {
+                            resultList = new ConnectionPool().makeConsult(sql);
+
+                            for (int i=0;i<resultList.size();i++){
+                                model.addRow(new Object[]{String.valueOf(resultList.get(i).get("id_user")),
+                                    String.valueOf(resultList.get(i).get("name_user")),
+                                    String.valueOf(resultList.get(i).get("ap_user")),
+                                    String.valueOf(resultList.get(i).get("pass_user"))
+                                });
+
+                            }
+
+                        } catch (SQLException ex) {
+                            System.err.println("Error al llenar tabla"+ ex);
+                            JOptionPane.showMessageDialog(null, "Error al mostrar información, Contactar al administrador");
+                            //System.out.println(ex);
+                        }
+                    }catch (Exception exc) {
+                            System.err.println(exc);
+                    }
+                }
+                
             }
         }
     }
