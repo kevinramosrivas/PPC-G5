@@ -59,7 +59,7 @@ public class ModificateThread extends Thread {
                 }
                 JOptionPane.showMessageDialog(null, "Usuario con id: "+this.id+" actualizado con exito");
                 
-                
+ 
             }
 
         }catch(Exception exc){
