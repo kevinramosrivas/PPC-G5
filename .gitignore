@@ -1,6 +1,4 @@
 *.mwb.bak
-nbproject/private/
-nbproject/private/private.xml
 build/
 nbbuild/
 dist/
