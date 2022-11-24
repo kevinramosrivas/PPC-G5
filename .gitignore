@@ -1,3 +1,10 @@
+### Java ###
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
 *.mwb.bak
 build/
 nbbuild/
