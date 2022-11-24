@@ -6,6 +6,8 @@ package Controller;
 
 import Connection.ConnectionPool;
 import Interface.Graficos;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.security.Timestamp;
@@ -16,6 +18,10 @@ import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.general.DefaultPieDataset;
 
 /**
  *
@@ -55,15 +61,16 @@ public class GraficosCtr  implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent e){
-    
         if(e.getSource()== graficosui.botonGraficos){
+            int operativo = 0;
+            int defectuosa = 0;
+            int mantenimiento =0;
             limpiarTabla(model,graficosui.tablaDatos);
             
                     try{
                         System.out.println("Consular tabla Computadoras");
                         List<Map<String, Object>> resultList = new ArrayList<>();
                         String sql = String.format(
-                              //   "SELECT * FROM admins where id_admin=%");
                                 "select id_pc, estado, id_lab, fecha_mod,obs from computer");
                         System.out.println(sql);
 
@@ -71,6 +78,15 @@ public class GraficosCtr  implements ActionListener {
                             resultList = new ConnectionPool().makeConsult(sql);
 
                             for (int i=0;i<resultList.size();i++){
+                                if("operativo".equals(resultList.get(i).get("estado").toString())){
+                                    operativo++;
+                                }
+                                else if("defectuosa".equals(resultList.get(i).get("estado").toString())){
+                                    defectuosa++;
+                                }
+                                else{
+                                    mantenimiento++;
+                                }
                                 model.addRow(new Object[]{String.valueOf(resultList.get(i).get("id_pc")),
                                     String.valueOf(resultList.get(i).get("estado")),
                                     String.valueOf(resultList.get(i).get("id_lab")),
@@ -79,6 +95,7 @@ public class GraficosCtr  implements ActionListener {
                                 });
 
                             }
+                             
 
                         } catch (SQLException ex) {
                             System.err.println("Error al llenar tabla"+ ex);
@@ -88,7 +105,30 @@ public class GraficosCtr  implements ActionListener {
                     }catch (Exception exc) {
                             System.err.println(exc);
                     }
-                }
+                    DefaultPieDataset datos = new DefaultPieDataset();
+                    datos.setValue("Computadoras operativa",operativo);
+                    datos.setValue("Computadoras defectuosa",defectuosa);
+                    datos.setValue("Computadoras en mantenimiento",mantenimiento);
+                    
+                    JFreeChart grafico_circular = ChartFactory.createPieChart(
+                            "Estados de las computadoras",
+                            datos,
+                            true,
+                            true,
+                            false
+                    );
+                    
+                    ChartPanel panel = new ChartPanel(grafico_circular);
+                    panel.setMouseWheelEnabled(true);
+                    panel.setPreferredSize(new Dimension(400,200));
+                    graficosui.jPanel1.setLayout(new BorderLayout());
+                    graficosui.jPanel1.add(panel,BorderLayout.NORTH);
+                    
+                    graficosui.pack();
+                    graficosui.repaint();
+                    
+                    
+        }
     }
 }
 
