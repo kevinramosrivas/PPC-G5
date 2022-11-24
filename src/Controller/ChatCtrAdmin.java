@@ -39,25 +39,12 @@ public class ChatCtrAdmin extends Thread
            entradaSocket=new InputStreamReader(s.getInputStream());
            entrada=new BufferedReader(entradaSocket);
            salida=new DataOutputStream(s.getOutputStream());
-           this.salida.writeUTF("****** CONECTADO *******\n \n");
         }catch(Exception e){
             System.out.println(e);
         };
     
     }
     
-    public ChatCtrAdmin(String ip)
-    {
-        try{
-
-           s=new Socket(ip,this.puerto);   
-           entradaSocket=new InputStreamReader(s.getInputStream());
-           entrada=new BufferedReader(entradaSocket);    
-           salida=new DataOutputStream(s.getOutputStream());
-         }catch(Exception e){
-             System.out.println(e);
-         };
-     }
 
     /**
      *

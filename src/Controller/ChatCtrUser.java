@@ -28,20 +28,6 @@ public class ChatCtrUser extends Thread
     final int puerto = 8000;
     private final AtomicBoolean running = new AtomicBoolean(false);
     
-    
-    public ChatCtrUser()
-    {
-        try{
-           ss=new ServerSocket(puerto);   
-           s=ss.accept();
-           entradaSocket=new InputStreamReader(s.getInputStream());
-           entrada=new BufferedReader(entradaSocket);     
-           salida=new DataOutputStream(s.getOutputStream());   
-        }catch(Exception e){
-            System.out.println(e);
-        };
-    
-    }
     public ChatCtrUser(String ip)
     {
         try{
@@ -60,19 +46,19 @@ public class ChatCtrUser extends Thread
     }
      public void run()
      {             
-         String texto="text";
+         String texto="";
          running.set(true);
          while(running.get())
          {
-             try{
+            try{
                   texto=entrada.readLine();
                   Interface.VentanaCliente. jTextArea1.setText(Interface.VentanaCliente.jTextArea1.getText()+"\n"+texto);
-                }catch(IOException e){
+            }catch(IOException e){
                     System.out.println(e);
-                };
+            };
          }
      }
-     public void enviarMSG(String msg)    //method for send a messages
+     public void enviarMSG(String msg)
      {
         try{
             salida.writeUTF(msg+"\n");
@@ -81,7 +67,7 @@ public class ChatCtrUser extends Thread
         };
      }
    
-     public String leerMSG()                //method for read a messages
+     public String leerMSG()
      { 
        try{
             return entrada.readLine();
