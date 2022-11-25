@@ -93,11 +93,14 @@ public class GraficosCtr  implements ActionListener {
                             //System.out.println(ex);
                         }
                         graficosui.jPanel1.removeAll();
+                        graficosui.jPanel3.removeAll();
                         graficosui.jPanel2.removeAll();
                         GraphicPieThread pie = new GraphicPieThread(graficosui,resultList);
                         pie.start();
-                        GraphicBarThread bar = new GraphicBarThread (graficosui,resultList);
+                        GraphicBarThreadCondtion bar = new GraphicBarThreadCondtion (graficosui,resultList);
                         bar.start();
+                        GraphicBarThreadLab bar2 = new GraphicBarThreadLab (graficosui,resultList);
+                        bar2.start();
                         graficosui.repaint();
                     }catch (Exception exc) {
                             System.err.println(exc);

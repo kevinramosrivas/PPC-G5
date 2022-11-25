@@ -20,13 +20,13 @@ import org.jfree.data.general.DefaultPieDataset;
  *
  * @author ramos
  */
-public class GraphicBarThread extends Thread{
+public class GraphicBarThreadCondtion extends Thread{
     public Graficos grafico;
     public List<Map<String, Object>> datos;
     public int operativo;
     public int defectuosa;
     public int mantenimiento;
-    public GraphicBarThread(Graficos grafico, List<Map<String, Object>> datos) {
+    public GraphicBarThreadCondtion(Graficos grafico, List<Map<String, Object>> datos) {
         this.grafico = grafico;
         this.datos = datos;
         this.mantenimiento = 0;
