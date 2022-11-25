@@ -68,25 +68,15 @@ public class GraficosCtr  implements ActionListener {
             limpiarTabla(model,graficosui.tablaDatos);
             
                     try{
-                        System.out.println("Consular tabla Computadoras");
                         List<Map<String, Object>> resultList = new ArrayList<>();
                         String sql = String.format(
                                 "select id_pc, estado, id_lab, fecha_mod,obs from computer");
-                        System.out.println(sql);
+                        //System.out.println(sql);
 
                         try {
                             resultList = new ConnectionPool().makeConsult(sql);
 
                             for (int i=0;i<resultList.size();i++){
-                                if("operativo".equals(resultList.get(i).get("estado").toString())){
-                                    operativo++;
-                                }
-                                else if("defectuosa".equals(resultList.get(i).get("estado").toString())){
-                                    defectuosa++;
-                                }
-                                else{
-                                    mantenimiento++;
-                                }
                                 model.addRow(new Object[]{String.valueOf(resultList.get(i).get("id_pc")),
                                     String.valueOf(resultList.get(i).get("estado")),
                                     String.valueOf(resultList.get(i).get("id_lab")),
@@ -102,30 +92,16 @@ public class GraficosCtr  implements ActionListener {
                             JOptionPane.showMessageDialog(null, "Error al mostrar información, Contactar al administrador");
                             //System.out.println(ex);
                         }
+                        graficosui.jPanel1.removeAll();
+                        graficosui.jPanel2.removeAll();
+                        GraphicPieThread pie = new GraphicPieThread(graficosui,resultList);
+                        pie.start();
+                        GraphicBarThread bar = new GraphicBarThread (graficosui,resultList);
+                        bar.start();
+                        graficosui.repaint();
                     }catch (Exception exc) {
                             System.err.println(exc);
                     }
-                    DefaultPieDataset datos = new DefaultPieDataset();
-                    datos.setValue("Computadoras operativa",operativo);
-                    datos.setValue("Computadoras defectuosa",defectuosa);
-                    datos.setValue("Computadoras en mantenimiento",mantenimiento);
-                    
-                    JFreeChart grafico_circular = ChartFactory.createPieChart(
-                            "Estados de las computadoras",
-                            datos,
-                            true,
-                            true,
-                            false
-                    );
-                    
-                    ChartPanel panel = new ChartPanel(grafico_circular);
-                    panel.setMouseWheelEnabled(true);
-                    panel.setPreferredSize(new Dimension(400,200));
-                    graficosui.jPanel1.setLayout(new BorderLayout());
-                    graficosui.jPanel1.add(panel,BorderLayout.NORTH);
-                    
-                    graficosui.pack();
-                    graficosui.repaint();
                     
                     
         }
