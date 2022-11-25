@@ -181,7 +181,7 @@ public class GraphicBarThread extends Thread{
                 "Laboratorio", 
                 "Cantidad", datos, 
                 PlotOrientation.HORIZONTAL, true, 
-                true, false,
+                true, false
                 );
         ChartPanel panel = new ChartPanel(grafico_barras);
         panel.setMouseWheelEnabled(true);
