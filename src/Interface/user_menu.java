@@ -3,6 +3,7 @@ package Interface;
 
 import Controller.LoginCtr;
 import Controller.ModificarCompCtr;
+import Controller.ModificarCompCtrTest;
 import Controller.PrintReportCtr;
 import Controller.RegisterCtr;
 import Controller.watchDemonUser;
@@ -157,7 +158,7 @@ public class user_menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ModificarCompCtr mcctr = new ModificarCompCtr();
+        ModificarCompCtrTest mcctr = new ModificarCompCtrTest();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
