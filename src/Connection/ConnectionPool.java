@@ -3,7 +3,6 @@ package Connection;
 
 import java.sql.*;
 import java.util.*;
-import javax.sql.DataSource;
 import org.apache.commons.dbcp2.BasicDataSource;
 
 
@@ -66,7 +65,7 @@ public class ConnectionPool {
         Connection conexion = null; 
         PreparedStatement consulta = null;
         ResultSet resultado = null;
-        List<Map<String, Object>> resultList = new ArrayList<Map<String, Object>>();
+        List<Map<String, Object>> resultList = new ArrayList<>();
         Map<String, Object> row = null;
         try{              
             conexion = instancia.getConnection();
