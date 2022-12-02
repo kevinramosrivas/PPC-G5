@@ -2,6 +2,8 @@
 package Interface;
 
 import Controller.LoginCtr;
+import Controller.ModificarCompCtr;
+import Controller.ModificarCompCtrTest;
 import Controller.PrintReportCtr;
 import Controller.RegisterCtr;
 import Controller.watchDemonUser;
@@ -49,6 +51,11 @@ public class user_menu extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/worker_icon.png"))); // NOI18N
 
         jButton1.setText("TRASLADAR EQUIPO");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("SERVICIO DE CHAT");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -149,6 +156,10 @@ public class user_menu extends javax.swing.JFrame {
         this.dispose();
         LoginCtr userLog = new LoginCtr("users");
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ModificarCompCtrTest mcctr = new ModificarCompCtrTest();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

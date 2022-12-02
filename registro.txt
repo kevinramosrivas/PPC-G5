@@ -1,0 +1,2 @@
+Lab: 2, PC: 9, Estado: defectuosa, Observaciones: null, Usuario: Alma Lab: 4, PC: 7, Estado: operativo, Observaciones: Cambiando pila, Usuario: Alma 
+Lab: 4, PC: 11, Estado: operativo, Observaciones: Mouse cambiado, Usuario: Frank
