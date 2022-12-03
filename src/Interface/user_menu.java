@@ -100,9 +100,6 @@ public class user_menu extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(name_user, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(91, 91, 91)
@@ -184,8 +181,19 @@ public class user_menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        UserReadFileCtr userRead = new UserReadFileCtr();
+        // se añade la conexion al servidor RMI
+        try {
+            Registry registro = LocateRegistry.getRegistry("127.0.0.1", 7777);
+            RMI interfaz = (RMI) registro.lookup("RemotoRMI");
+
+            List<String> respuesta = interfaz.leerModificaciones(usuario.getName_user());
+            for (String linea : respuesta) {
+                System.out.println(linea);
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**

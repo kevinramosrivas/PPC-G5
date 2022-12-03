@@ -53,7 +53,6 @@ public class ServidorRMI1 extends UnicastRemoteObject implements Controller.RMI{
     public List<String> leerModificaciones(String nombreEmpleado) throws RemoteException {
         List<String> leer = archivo.leer(nombreEmpleado);
         return leer;
-        
     }
 
 

@@ -58,6 +58,7 @@ public class Archivo {
             bw.write("\n"+texto);
             System.out.println("información agregada!");
         } catch (IOException e) {
+            System.out.println(e);
         } finally {
             try {
                 //Cierra instancias de FileWriter y BufferedWriter
@@ -98,14 +99,16 @@ public class Archivo {
 
            // Lectura del fichero para buscar el nombre del usuario
            String linea;
-           while((linea=br.readLine())!=null)
-              if(linea.contains(nombreEmpleado)){
-                  coincidencias.add(linea);
+           while((linea=br.readLine())!=null){
+                if(linea.contains(nombreEmpleado)){
+                    coincidencias.add(linea);
+                }
            }
+            System.out.println(coincidencias);
         }
         catch(IOException e){
+           e.printStackTrace();
            System.out.println("Hubo un error al abrir el archivo");
-           return null;
         }finally{
            // En el finally cerramos el fichero, para asegurarnos
            // que se cierra tanto si todo va bien como si salta 
