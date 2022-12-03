@@ -181,19 +181,8 @@ public class user_menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // se añade la conexion al servidor RMI
-        try {
-            Registry registro = LocateRegistry.getRegistry("127.0.0.1", 7777);
-            RMI interfaz = (RMI) registro.lookup("RemotoRMI");
-
-            List<String> respuesta = interfaz.leerModificaciones(usuario.getName_user());
-            for (String linea : respuesta) {
-                System.out.println(linea);
-            }
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }
+        UserReadFileCtr usrFilectr = new UserReadFileCtr();
+        usrFilectr.getData();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
