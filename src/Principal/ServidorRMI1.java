@@ -2,6 +2,7 @@
 package Principal;
 import Connection.ConnectionPool;
 import Controller.RMI;
+import Model.Archivo;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -11,11 +12,12 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 public class ServidorRMI1 extends UnicastRemoteObject implements Controller.RMI{
-
+    public Archivo archivo = Model.Archivo.archivo;
     public ServidorRMI1() throws RemoteException {
     }
 
@@ -36,44 +38,22 @@ public class ServidorRMI1 extends UnicastRemoteObject implements Controller.RMI{
         Integer.parseInt(lab),estado,obs,Integer.parseInt(comp));
         try {
             new ConnectionPool().makeUpdate(sql);
-            System.out.println("Consulta realizada por"+usuario);
         } catch (SQLException ex) {
             Logger.getLogger(ServidorRMI1.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
         //guardar las modificaciones en un archivo de texto
-        String texto = String.format("Lab: %s, PC: %s, Estado: %s, Observaciones: %s, Usuario: %s",
-        lab,comp,estado,obs,usuario);
-        
-        //crear un archivo de texto
-        BufferedWriter bw = null;
-        FileWriter fw = null;
-
-        try {
-            File file = new File("registro.txt");
-            // Si el archivo no existe, se crea!
-            if (!file.exists()) {
-                file.createNewFile();
-            }
-            // flag true, indica adjuntar información al archivo.
-            fw = new FileWriter(file.getAbsoluteFile(), true);
-            bw = new BufferedWriter(fw);
-            bw.write("\n"+texto);
-            System.out.println("información agregada!");
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                //Cierra instancias de FileWriter y BufferedWriter
-                if (bw != null)
-                    bw.close();
-                if (fw != null)
-                    fw.close();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-        }
+        String texto = String.format("%s, PC: %s, Estado: %s, Observaciones: %s, Lab: %s",
+        usuario,comp,estado,obs,lab);
+        archivo.escribir(texto);
         return true;
+    }
+
+    @Override
+    public List<String> leerModificaciones(String nombreEmpleado) throws RemoteException {
+        List<String> leer = archivo.leer(nombreEmpleado);
+        return leer;
+        
     }
 
 
