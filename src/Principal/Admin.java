@@ -15,5 +15,6 @@ public class Admin {
 
     public static void main(String[] args) {
         LoginCtr adlog = new LoginCtr("admins");
+        ServidorRMI1.main(args);
     }
 }

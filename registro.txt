@@ -1,0 +1,6 @@
+
+Alma , PC: 5, Estado: defectuosa, Observaciones: Error en memoria RAM, Lab: 2
+Faustino , PC: 11, Estado: operativo, Observaciones: Mouse cambiado, Lab: 6
+Frank, PC: 7, Estado: operativo, Observaciones: Cambiando pila, Lab: 5
+Frank, PC: 7, Estado: defectuosa, Observaciones: Cambiando pila, Lab: 5
+Frank, PC: 13, Estado: operativo, Observaciones: Error en memoria RAM, Lab: 7
