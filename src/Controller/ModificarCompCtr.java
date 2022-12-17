@@ -23,16 +23,16 @@ import javax.swing.JOptionPane;
  */
 public class ModificarCompCtr implements ActionListener{
     private ModificarComp modificarui;
-    private List<Map<String, Object>> resultList;
-    private List<Map<String, Object>> resultByLab;
+    private List<Map<String, Object>> resultList, resultByLab;
     private List<String> labsUniques, compUniques, estUniques;
     private Map<String, Object> selectedComp;
     
     public ModificarCompCtr() {
+        this.getData();
+        
         modificarui = new ModificarComp();
         modificarui.cmb_labId.addActionListener(this);
         modificarui.btn_mod.addActionListener(this);
-        this.getData();
     }
     private List getUniquesItems(List<Map<String, Object>> dataset, String key, boolean sort){
         List<String> list= new ArrayList<>();
