@@ -10,6 +10,7 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,9 +20,16 @@ public class UserReadFileCtr {
     ModificationReport reporte;
     String acumulador = "";
     public User usuario = Model.User.usuario;
+    public DefaultTableModel model = new DefaultTableModel();
     public UserReadFileCtr(){
         // Por implementar
         reporte = new ModificationReport();
+        // añadir columnas a la tabla
+        model.addColumn("Id PC");
+        model.addColumn("Estado");
+        model.addColumn("Modificacion");
+        model.addColumn("Laboratorio");
+        reporte.jTableModifications.setModel(model);
     }
     public void getData(){
         // se añade la conexion al servidor RMI
@@ -30,14 +38,16 @@ public class UserReadFileCtr {
             RMI interfaz = (RMI) registro.lookup("RemotoRMI");
             
             List<String> respuesta = interfaz.leerModificaciones(usuario.getName_user());
-            for (String linea : respuesta) {
-                acumulador = acumulador + linea + "\n";
+            for (String string : respuesta) {
+                String[] datos = string.split(",");
+                //consideramos todo excepto el nombre
+                model.addRow(new Object[]{datos[1], datos[2], datos[3], datos[4]});
             }
+            
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
-        reporte.jTextModification.setText(acumulador);
         
     }
 }
