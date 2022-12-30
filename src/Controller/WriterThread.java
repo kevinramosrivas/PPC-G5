@@ -17,6 +17,7 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.io.FileOutputStream;
 import Connection.ConnectionPool;
+import com.itextpdf.text.Paragraph;
 import javax.swing.JOptionPane;
 /**
  *
@@ -37,6 +38,8 @@ public class WriterThread extends Thread{
                     "/Downloads/ReporteLaboratorio_"+this.nameLab+".pdf"));
             documento.open();
             PdfPTable tabla = new PdfPTable(5);
+            Paragraph p = new Paragraph();
+            p.add("Reporte de laboratorio "+nameLab);
             tabla.addCell("id_pc");
             tabla.addCell("estado");
             tabla.addCell("id_lab");
@@ -54,6 +57,10 @@ public class WriterThread extends Thread{
                     tabla.addCell(String.valueOf(resultList.get(i).get("fecha_mod")));
                     tabla.addCell(String.valueOf(resultList.get(i).get("obs")));
                 }
+                //añadir el parrafo al documento centrado y con un espacio de 20
+                p.setAlignment(Paragraph.ALIGN_CENTER);
+                p.setSpacingAfter(20);
+                documento.add(p);
                 documento.add(tabla);
 
             } catch (SQLException ex) {
