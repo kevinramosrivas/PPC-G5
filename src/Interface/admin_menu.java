@@ -18,6 +18,7 @@ public class admin_menu extends javax.swing.JFrame {
      */
     public admin_menu() {
         initComponents();
+        reloj.setDaemon(true);
         reloj.start();
         setLocationRelativeTo(null);
         setVisible(true);
